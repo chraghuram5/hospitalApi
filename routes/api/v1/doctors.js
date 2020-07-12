@@ -4,6 +4,6 @@ const router = express.Router();
 const doctorsApi=require("../../../controllers/api/v1/doctors_api");
 
 router.post('/register',doctorsApi.register);
-router.post('/create-session',doctorsApi.createSession);
+router.post('/login',doctorsApi.createSession);
 
 module.exports=router;
