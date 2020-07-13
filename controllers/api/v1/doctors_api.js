@@ -1,6 +1,7 @@
 const Doctor=require('../../../models/doctor');
 const jwt=require('jsonwebtoken');
 
+//create session for doctor
 module.exports.createSession = async function(req, res){
    try{
     console.log(req.body);
@@ -28,6 +29,7 @@ module.exports.createSession = async function(req, res){
    }
 }
 
+//register a doctor
 module.exports.register=async function(req,res){
     try{
         let doctor={};

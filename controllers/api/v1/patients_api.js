@@ -1,6 +1,7 @@
 const Patient = require('../../../models/patient');
 const Report = require('../../../models/report');
 
+//Register a patient
 module.exports.register = async function (req, res) {
     try {
         let patient = {};
@@ -19,6 +20,7 @@ module.exports.register = async function (req, res) {
     }
 }
 
+//Create report for a patient
 module.exports.createReport = async function (req, res) {
     try {
         let report = {};
@@ -33,18 +35,20 @@ module.exports.createReport = async function (req, res) {
         patient.save();
 
         return res.json(200, {
-            message: "Report created successfully"
+            message: "Report created successfully",
+            report:reportCreated
         })
     }
     catch (err) {
-        console.log("ERROR in creating Report");
+        console.log("ERROR in creating Report. Please check valid status are 'NEGATIVE','TRAVELLED-QUARANTINE','SYMPTOMS-QUARANTINE','POSITIVE-ADMIT'");
         console.log(err);
         return res.json(500, {
-            message: "report creationg unsuccessful",
+            message: "ERROR in creating Report. Please check valid status are 'NEGATIVE','TRAVELLED-QUARANTINE','SYMPTOMS-QUARANTINE','POSITIVE-ADMIT'",
         })
     }
 }
 
+//fetching all the reports
 module.exports.reportsAll = async function (req, res) {
 
     try {

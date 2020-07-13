@@ -5,8 +5,11 @@ const Doctor=require('../models/doctor');
 
 let opts = {}
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+
+//secret used for decrypting
 opts.secretOrKey = 'secret';
 
+//configuring strategy
 passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
     Doctor.findOne({_id: jwt_payload._id}, function(err, doctor) {
         if (err) {
