@@ -15,7 +15,7 @@ module.exports.createSession = async function(req, res){
         message:"Sign in successful",
         data:{
             doctor: doctor,
-            token: jwt.sign(doctor.toJSON(),'secret', {expiresIn: '100000'})
+            token: jwt.sign(doctor.toJSON(),'secret', {expiresIn: '1000000'})
         }
     })
    }
@@ -33,6 +33,7 @@ module.exports.register=async function(req,res){
         let doctor={};
         doctor.username=req.body.username;
         doctor.password=req.body.password;
+        doctor.name=req.body.name;
         console.log(doctor);
         let doctorCreated=await Doctor.create(doctor);
         return res.json(200,{

@@ -8,9 +8,10 @@ const reportSchema = new mongoose.Schema({
     doctor:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Doctor'
+    },
+    date:{
+        type: String
     }
-}, {
-    timestamps: true
 });
 
 

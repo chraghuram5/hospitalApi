@@ -26,6 +26,7 @@ module.exports.createReport = async function (req, res) {
         let doctor = req.user;
         report.doctor = doctor;
         report.status = req.body.status;
+        report.date=new Date().toDateString();
         let reportCreated = await Report.create(report);
         let patient = await Patient.findById(id);
         patient.reports.push(reportCreated);
@@ -53,30 +54,24 @@ module.exports.reportsAll = async function (req, res) {
             path:'reports',
             populate:{
                 path:'doctor',
-            }
+                select:'-password-_id-__v',
+            },
+            select:'-_id-__v'
         });
 
         let reports=patientReports.reports;
 
-        function compare(a, b) {
-           
-            let c=a.createdAt;
-            let d=b.createdAt;
-          
-            let comparison = 0;
-            if (c > d) {
-              comparison = 1;
-            } else if (c<d) {
-              comparison = -1;
-            }
-            return comparison;
-          }
-          
-          reports.sort(compare);
+        reports.sort((a,b)=>{
+            if(a.date>b.date)
+                return 1;
+            else
+                return -1;
+        })
         return res.json(200, {
             reports
         })
     }
+
     catch(err){
         console.log("ERROR in fetching Report");
         console.log(err);

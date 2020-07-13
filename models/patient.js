@@ -11,14 +11,18 @@ const patientSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    age:{
+        type:String
+    },
+    sex:{
+        type: String
+    },
     reports:[
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Report'
         }
     ]
-}, {
-    timestamps: true
 });
 
 patientSchema.plugin(findOrCreate)
