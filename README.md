@@ -27,7 +27,7 @@
 - /reports/:status → List all the reports of all the patients filtered by a specific status
 
 ## Run the Application
-1. Install [Postman](https://www.postman.com/downloads/)
+1. Install [Postman](https://www.postman.com/downloads/) or use Web [Dashboard](https://web.postman.co/workspaces?type=personal)
 2. Clone or download the project as zip file.
 3. Open New terminal and enter the command `npm install`
 4. Start the application using `npm start`
