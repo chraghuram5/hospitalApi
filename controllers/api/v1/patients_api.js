@@ -8,13 +8,13 @@ module.exports.register = async function (req, res) {
         patient.name = req.body.name;
         patient.phone = req.body.phone;
         let patientCreated = await Patient.findOrCreate(patient);
-        return res.json(200, {
+        return res.status(200).json({
             patientCreated
         });
     }
     catch (err) {
-        console.log("ERROR in registration");
-        return res.json(500, {
+        //console.log("ERROR in registration");
+        return res.status(500).json({
             message: "registration unsuccessful",
         })
     }
@@ -34,15 +34,15 @@ module.exports.createReport = async function (req, res) {
         patient.reports.push(reportCreated);
         patient.save();
 
-        return res.json(200, {
+        return res.status(200).json({
             message: "Report created successfully",
             report:reportCreated
         })
     }
     catch (err) {
-        console.log("ERROR in creating Report. Please check valid status are 'NEGATIVE','TRAVELLED-QUARANTINE','SYMPTOMS-QUARANTINE','POSITIVE-ADMIT'");
-        console.log(err);
-        return res.json(500, {
+        //console.log("ERROR in creating Report. Please check valid status are 'NEGATIVE','TRAVELLED-QUARANTINE','SYMPTOMS-QUARANTINE','POSITIVE-ADMIT'");
+        //console.log(err);
+        return res.status(500).json({
             message: "ERROR in creating Report. Please check valid status are 'NEGATIVE','TRAVELLED-QUARANTINE','SYMPTOMS-QUARANTINE','POSITIVE-ADMIT'",
         })
     }
@@ -71,14 +71,14 @@ module.exports.reportsAll = async function (req, res) {
             else
                 return -1;
         })
-        return res.json(200, {
+        return res.status(200).json({
             reports
         })
     }
 
     catch(err){
-        console.log("ERROR in fetching Report");
-        console.log(err);
+        //console.log("ERROR in fetching Report");
+        //console.log(err);
         return res.json(500, {
             message: "reports fetching unsuccessful",
         })

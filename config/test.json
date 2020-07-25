@@ -1,0 +1,3 @@
+{
+    "dbhost":"mongodb://localhost/hospitalApi_test"
+}
