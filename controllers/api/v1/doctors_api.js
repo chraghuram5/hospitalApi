@@ -4,7 +4,7 @@ const jwt=require('jsonwebtoken');
 //create session for doctor
 module.exports.createSession = async function(req, res){
    try{
-    console.log(req.body);
+    // console.log(req.body);
     let doctor=await Doctor.findOne({username:req.body.username});
     if(!doctor || doctor.password!=req.body.password){
         return res.json(422,{
@@ -12,7 +12,7 @@ module.exports.createSession = async function(req, res){
         });
     }
 
-    return res.json(200,{
+    return res.status(200).json({
         message:"Sign in successful",
         data:{
             doctor: doctor,
@@ -21,8 +21,8 @@ module.exports.createSession = async function(req, res){
     })
    }
    catch(err){
-    console.log("ERROR");
-    console.log(err);
+    //console.log("ERROR");
+    //console.log(err);
     return res.json(500,{
         message:"Internal Server error"
     });
@@ -36,7 +36,7 @@ module.exports.register=async function(req,res){
         doctor.username=req.body.username;
         doctor.password=req.body.password;
         doctor.name=req.body.name;
-        console.log(doctor);
+        //console.log(doctor);
         let doctorCreated=await Doctor.create(doctor);
         return res.json(200,{
             message:"Doctor successfully registered",
@@ -44,7 +44,7 @@ module.exports.register=async function(req,res){
         });
     }
     catch(err){
-        console.log("ERROR in registration");
+        //console.log("ERROR in registration");
         return res.json(500,{
             message:"registration unsuccessful",
         })

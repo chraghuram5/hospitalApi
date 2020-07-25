@@ -16,7 +16,6 @@ passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
             console.log('Error in finding doctor from JWT');
             return done(err, false);
         }
-        console.log(doctor);
         if (doctor) {
             return done(null, doctor);
         } else {

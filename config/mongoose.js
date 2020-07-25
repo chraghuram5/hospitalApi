@@ -1,7 +1,8 @@
+const config=require('config');
 const mongoose = require('mongoose');
 
 //connect to mongodb
-mongoose.connect('mongodb://localhost/hospitalApi');
+mongoose.connect(config.dbhost);
 
 //fetch the connection
 const db = mongoose.connection;
