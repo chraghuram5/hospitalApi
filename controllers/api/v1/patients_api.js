@@ -71,7 +71,7 @@ module.exports.reportsAll = async function (req, res) {
             else
                 return -1;
         })
-        return res.json(200, {
+        return res.status(200).json({
             reports
         })
     }
