@@ -93,7 +93,7 @@ describe('Hospital Api', () => {
                 .end((err, res) => {
                     res.body.should.be.a('object');
                     res.should.have.status(200);
-                    res.body.patientCreated.doc.should.have.property('name').equal(patient.name);
+                    res.body.patientCreated.doc.should.have.property('name').equal(secondPatient.name);
                     done();
                 });
         });
