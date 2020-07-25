@@ -42,7 +42,7 @@ module.exports.createReport = async function (req, res) {
     catch (err) {
         //console.log("ERROR in creating Report. Please check valid status are 'NEGATIVE','TRAVELLED-QUARANTINE','SYMPTOMS-QUARANTINE','POSITIVE-ADMIT'");
         //console.log(err);
-        return res.json(500, {
+        return res.status(500).json({
             message: "ERROR in creating Report. Please check valid status are 'NEGATIVE','TRAVELLED-QUARANTINE','SYMPTOMS-QUARANTINE','POSITIVE-ADMIT'",
         })
     }

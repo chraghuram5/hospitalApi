@@ -160,6 +160,21 @@ describe('Hospital Api', () => {
                     done();
                 });
         });
+
+        it('Route should have correct id in the url', (done) => {
+            let tempId="abcd1234"
+            chai.request(server)
+                .post('/api/v1/patients/' + tempId + '/create_report')
+                .set({ "Authorization": `Bearer ${token}` })
+                .set('Content-Type', 'application/x-www-form-urlencoded')
+                .send(status)
+                .end((err, res) => {
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('message');
+                    res.body.should.have.property('message').equal("ERROR in creating Report. Please check valid status are 'NEGATIVE','TRAVELLED-QUARANTINE','SYMPTOMS-QUARANTINE','POSITIVE-ADMIT'");
+                    done();
+                });
+        });
     });
 
     describe('/GET /api/v1/patients/:id/all_reports', () => {
