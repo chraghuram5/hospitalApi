@@ -84,7 +84,7 @@ describe('Hospital Api', () => {
     //Test cases for /patients/register route
     describe('/POST /patients/register', () => {
         //Test case for checking registration and latest patient
-        it('Route should register latest patient and return the latest Patient', (done) => {
+        it('should register latest patient and return the latest Patient', (done) => {
             chai.request(server)
                 .post('/api/v1/patients/register')
                 .set({ "Authorization": `Bearer ${token}` })
@@ -99,7 +99,7 @@ describe('Hospital Api', () => {
         });
 
         //Test case for checking authorization
-        it('Route should be Authorized for patient Registration', (done) => {
+        it('should be Authorized for patient Registration', (done) => {
             let tempToken = 'hello';
             chai.request(server)
                 .post('/api/v1/patients/register')
@@ -114,7 +114,7 @@ describe('Hospital Api', () => {
         });
 
         //Test case for validating absence of name and phone in the form body
-        it('Route should have name and phone in the form body for patient Registration', (done) => {
+        it('should have name and phone in the form body for patient Registration', (done) => {
             let patient = {
                 age: '50'
             }
@@ -135,7 +135,7 @@ describe('Hospital Api', () => {
     //Test case for /api/v1/patients/:id/create_report
     describe('/POST /api/v1/patients/:id/create_report', () => {
         //Test case for checking the latest report creation
-        it('Route should create the latest report successfully', (done) => {
+        it('should create the latest report successfully', (done) => {
             chai.request(server)
                 .post('/api/v1/patients/' + patientId + '/create_report')
                 .set({ "Authorization": `Bearer ${token}` })
@@ -169,7 +169,7 @@ describe('Hospital Api', () => {
         });
 
         //Test case for validating the absence of status in the body
-        it('Route should have status in the body', (done) => {
+        it('should have status in the body', (done) => {
             let tempStatus = {}
             let tempToken = "wrongToken"
             chai.request(server)
@@ -185,7 +185,7 @@ describe('Hospital Api', () => {
         });
 
         //Test case for validating the correct Id in the url
-        it('Route should have correct id in the url', (done) => {
+        it('should have correct id in the url', (done) => {
             let tempId="abcd1234"
             chai.request(server)
                 .post('/api/v1/patients/' + tempId + '/create_report')
@@ -205,7 +205,7 @@ describe('Hospital Api', () => {
     describe('/GET /api/v1/patients/:id/all_reports', () => {
 
         //Test case for checking the reports of the patient with an id
-        it('Route should return the reports of the patient in an Array', (done) => {
+        it('should return the reports of the patient in an Array', (done) => {
             chai.request(server)
                 .get('/api/v1/patients/' + patientId + '/all_reports')
                 .set({ "Authorization": `Bearer ${token}` })
@@ -220,7 +220,7 @@ describe('Hospital Api', () => {
         });
 
         //Test case for checking authorization
-        it('Route should be authorized', (done) => {
+        it('should be authorized', (done) => {
             let tempToken="wrongToken";
             chai.request(server)
                 .get('/api/v1/patients/' + patientId + '/all_reports')
