@@ -31,3 +31,4 @@
 2. Clone or download the project as zip file.
 3. Open New terminal and enter the command `npm install`
 4. Start the application using `npm start`
+5. Run the tests for the api using `npm test`
