@@ -1,9 +1,11 @@
 const Report=require('../../../models/report');
-const jwt=require('jsonwebtoken');
 
+//Get all the reports
 module.exports.reports=async function(req,res){
     
     let reportStatus=req.params.status;
+
+    //Find reports based on report status and populate with doctor details
     let reports=await Report.find({status:reportStatus})
     .populate({
         path:'doctor',
